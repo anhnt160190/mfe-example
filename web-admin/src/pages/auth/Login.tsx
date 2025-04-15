@@ -1,3 +1,11 @@
+import { lazy, Suspense } from 'react';
+
+const RemoteLoginPage = lazy(() => import('mfe-web-auth/LoginPage'));
+
 export default function LoginPage() {
-  return <div>Login Page</div>;
+  return (
+    <Suspense fallback={null}>
+      <RemoteLoginPage />
+    </Suspense>
+  );
 }
