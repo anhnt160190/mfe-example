@@ -11,6 +11,7 @@ export default defineConfig({
       filename: 'remoteEntry.js',
       exposes: {
         './LoginPage': './src/pages/auth/Login.tsx',
+        './AuthProvider': './src/features/Auth/Auth.provider.tsx',
       },
       shared: ['react', 'react-dom'],
     }),
