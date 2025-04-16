@@ -10,8 +10,8 @@ export default defineConfig({
       name: 'mfe-web-auth',
       filename: 'remoteEntry.js',
       exposes: {
-        './LoginPage': './src/pages/auth/Login.tsx',
-        './AuthProvider': './src/features/Auth/Auth.provider.tsx',
+        './pages': './src/exposes/pages.tsx',
+        './hooks': './src/exposes/hooks.ts',
       },
       shared: ['react', 'react-dom'],
     }),

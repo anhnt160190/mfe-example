@@ -1,4 +1,3 @@
-declare module 'mfe-web-auth/LoginPage' {
-  const Component: React.ComponentType;
-  export default Component;
+declare module 'mfe-web-auth/pages' {
+  export function LoginPage(): JSX.Element;
 }

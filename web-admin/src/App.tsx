@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 
-import LoginPage from './pages/auth/Login';
-import NotFoundPage from './pages/not_found/404';
+import { LoginPage } from './pages/auth/Login';
+import { NotFoundPage } from './pages/not_found/404';
 
 function App() {
   return (
