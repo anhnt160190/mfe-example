@@ -12,7 +12,7 @@ export default defineConfig({
       remotes: {
         'mfe-web-auth': 'http://localhost:4001/assets/remoteEntry.js',
       },
-      shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom', 'react-router'],
     }),
   ],
   server: {

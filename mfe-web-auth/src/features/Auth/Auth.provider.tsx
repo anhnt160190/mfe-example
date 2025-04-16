@@ -41,11 +41,7 @@ const AuthReducer = (state: IAuthState, action: AuthAction): IAuthState => {
   }
 };
 
-export default function AuthProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const handleLogin = async (email: string, password: string) => {
@@ -74,4 +70,4 @@ export default function AuthProvider({
       {children}
     </AuthContext.Provider>
   );
-}
+};

@@ -12,8 +12,9 @@ export default defineConfig({
       exposes: {
         './pages': './src/exposes/pages.tsx',
         './hooks': './src/exposes/hooks.ts',
+        './features': './src/exposes/features.ts',
       },
-      shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom', 'react-router'],
     }),
   ],
   build: {

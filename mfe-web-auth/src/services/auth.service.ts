@@ -20,7 +20,7 @@ export const login = async (email: string, password: string) => {
     (user) => user.email === email && user.password === password
   );
   if (!user) {
-    throw new Error('Invalid email or password');
+    throw new Error('Invalid credentials');
   }
   return user;
 };
