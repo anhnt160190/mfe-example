@@ -4,14 +4,14 @@ const mockUsers = [
     email: 'superadmin@gmail.com',
     password: 'password',
     name: 'Super Admin',
-    avatarUrl: 'https://avatar.iran.liara.run/public',
+    permissions: ['read', 'write', 'update', 'delete'],
   },
   {
     id: '2',
     email: 'admin@gmail.com',
     password: 'password',
     name: 'Admin',
-    avatarUrl: 'https://avatar.iran.liara.run/public',
+    permissions: ['read', 'write', 'update'],
   },
 ];
 
@@ -22,9 +22,24 @@ export const login = async (email: string, password: string) => {
   if (!user) {
     throw new Error('Invalid credentials');
   }
-  return user;
+  const token = `${user.id}***${user.email}`;
+  localStorage.setItem('access_token', token);
+  return token;
 };
 
 export const logout = async () => {
   return true;
+};
+
+export const getUser = async () => {
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    return null;
+  }
+
+  const [userId, email] = token.split('***');
+  const user = mockUsers.find(
+    (user) => user.id === userId && user.email === email
+  );
+  return user;
 };

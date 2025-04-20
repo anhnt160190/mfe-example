@@ -8,4 +8,12 @@ declare module 'mfe-web-auth/features' {
   }: {
     children: React.ReactNode;
   }): JSX.Element;
+
+  export function ProtectedRoute({
+    children,
+    permissions,
+  }: {
+    children: React.ReactNode;
+    permissions: string[];
+  }): JSX.Element;
 }

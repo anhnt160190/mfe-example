@@ -4,7 +4,7 @@ export interface IUser {
   id: string;
   name: string;
   email: string;
-  avatarUrl?: string;
+  permissions: string[];
 }
 
 export interface IAuthState {
@@ -12,6 +12,7 @@ export interface IAuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
+  isLoaded: boolean;
 }
 
 export interface IAuthContext extends IAuthState {
