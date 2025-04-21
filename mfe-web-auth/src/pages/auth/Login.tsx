@@ -1,4 +1,28 @@
-export default function LoginPage() {
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useNavigate } from 'react-router';
+
+import { useAuth } from '../../contexts/Auth.context';
+
+export const LoginPage = () => {
+  const navigate = useNavigate();
+  const { login, error } = useAuth();
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid email address').required(),
+      password: Yup.string().required(),
+    }),
+    onSubmit: async (values) => {
+      await login(values.email, values.password);
+      return navigate('/landing');
+    },
+  });
+
   return (
     <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
       <h2 className='mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900'>
@@ -6,7 +30,12 @@ export default function LoginPage() {
       </h2>
 
       <div className='mt-4 sm:mx-auto sm:w-full sm:max-w-sm'>
-        <form action='#' method='POST' className='space-y-5'>
+        {error && (
+          <div className='rounded-md p-2 bg-red-100 mb-2'>
+            <p className='text-red-800'>{error}</p>
+          </div>
+        )}
+        <form className='space-y-5' onSubmit={formik.handleSubmit}>
           <div>
             <label
               htmlFor='email'
@@ -19,10 +48,14 @@ export default function LoginPage() {
                 id='email'
                 name='email'
                 type='email'
-                required
+                onChange={formik.handleChange}
+                value={formik.values.email}
                 autoComplete='email'
                 className='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
               />
+              {formik.touched.email && formik.errors.email && (
+                <label className='text-red-500'>{formik.errors.email}</label>
+              )}
             </div>
           </div>
 
@@ -38,10 +71,14 @@ export default function LoginPage() {
                 id='password'
                 name='password'
                 type='password'
-                required
+                onChange={formik.handleChange}
+                value={formik.values.password}
                 autoComplete='current-password'
                 className='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
               />
+              {formik.touched.password && formik.errors.password && (
+                <label className='text-red-500'>{formik.errors.password}</label>
+              )}
             </div>
           </div>
 
@@ -57,4 +94,4 @@ export default function LoginPage() {
       </div>
     </div>
   );
-}
+};

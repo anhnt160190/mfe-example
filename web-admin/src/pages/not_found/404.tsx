@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-export default function NotFoundPage() {
+export const NotFoundPage = () => {
   return (
     <div className='flex items-center justify-center h-screen'>
       <div className='text-center'>
@@ -22,4 +22,4 @@ export default function NotFoundPage() {
       </div>
     </div>
   );
-}
+};
