@@ -9,7 +9,9 @@ export default defineConfig({
     federation({
       name: 'mfe-web-users',
       filename: 'remoteEntry.js',
-      exposes: {},
+      exposes: {
+        './pages': './src/exposes/pages.tsx',
+      },
       shared: ['react', 'react-dom', 'react-router'],
     }),
   ],

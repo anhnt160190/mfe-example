@@ -17,3 +17,7 @@ declare module 'mfe-web-auth/features' {
     permissions: string[];
   }): JSX.Element;
 }
+
+declare module 'mfe-web-users/pages' {
+  export function ListUsersPage(): JSX.Element;
+}
