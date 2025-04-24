@@ -3,6 +3,8 @@ import { ProtectedRoute } from 'mfe-web-auth/features';
 import { LoginPage } from './pages/auth/Login';
 import { NotFoundPage } from './pages/not_found/404';
 import { LandingPage } from './pages/landing/Landing';
+import { ListUsersPage } from './pages/users/list-users';
+import { UserDetailPage } from './pages/users/user-detail';
 
 function App() {
   return (
@@ -17,6 +19,22 @@ function App() {
             element={
               <ProtectedRoute permissions={['read']}>
                 <LandingPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/users'
+            element={
+              <ProtectedRoute permissions={['read']}>
+                <ListUsersPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/users/:userId'
+            element={
+              <ProtectedRoute permissions={['read']}>
+                <UserDetailPage />
               </ProtectedRoute>
             }
           />
