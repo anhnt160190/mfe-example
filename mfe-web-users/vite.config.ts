@@ -7,18 +7,12 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'web-admin',
+      name: 'mfe-web-users',
       filename: 'remoteEntry.js',
-      remotes: {
-        'mfe-web-auth': 'http://localhost:4001/assets/remoteEntry.js',
-        'mfe-web-users': 'http://localhost:4002/assets/remoteEntry.js',
-      },
+      exposes: {},
       shared: ['react', 'react-dom', 'react-router'],
     }),
   ],
-  server: {
-    port: 4000,
-  },
   build: {
     target: 'esnext',
   },
